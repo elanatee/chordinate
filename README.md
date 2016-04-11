@@ -9,3 +9,8 @@ chord class
 
 ## theory.py
 test file
+
+## todo
+- minor scales
+- function to resolve V7 chords
+- function to generate V/V chords
