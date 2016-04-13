@@ -1,9 +1,11 @@
 pitches = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B']
+minor = ['c', 'c#', 'd', 'eb', 'e', 'f', 'f#', 'g', 'g#', 'a', 'bb', 'b']
+major = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B']
 currentKey = []
 
 def main():
-	key = raw_input('enter a key: ')
-	#getKey(key)
+	#key = raw_input('enter a key: ')
+	getKey()
 	"""
 	keyPitches = ""
 	for i in currentKey:
@@ -13,7 +15,7 @@ def main():
 
 def getIndex(key):
 	for i in range(len(pitches)):
-		if pitches[i] == key:
+		if major[i] == key or minor[i] == key:
 			return i
 
 def halfStep(pitch):
@@ -22,18 +24,33 @@ def halfStep(pitch):
 def wholeStep(pitch):
 	return pitch + 2
 
+def getMajor(tonic):
+	index = getIndex(tonic)
+	for i in range(7):
+		#print pitches[index]
+		currentKey.append(pitches[index % len(pitches)])
+		if i == 2:
+			index = halfStep(index)
+		else:
+			index = wholeStep(index)
+
+def getMinor(tonic):
+	index = getIndex(tonic)
+	for i in range(7):
+		currentKey.append(pitches[index % len(pitches)])
+		if i == 1 or i == 4:
+			index = halfStep(index)
+		else:
+			index = wholeStep(index)
+	return currentKey
+
 def getKey():
 	key = raw_input('\nenter a key: ')
-	if key in pitches:
-		#print 'you chose the key of ' + key 
-		index = getIndex(key)
-		for i in range(7):
-			#print pitches[index]
-			currentKey.append(pitches[index % len(pitches)])
-			if i == 2:
-				index = halfStep(index)
-			else:
-				index = wholeStep(index)
+	#print 'you chose the key of ' + key 
+	if key in major:
+		getMajor(key)
+	elif key in minor:
+		print getMinor(key)
 	else:
 		print 'please enter a valid key'
 		getKey()
