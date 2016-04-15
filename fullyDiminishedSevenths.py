@@ -10,16 +10,42 @@ def getIndex(key):
 		if major[i] == key or minor[i] == key:
 			return i
 
-def getMinorSeventh(tonic):
-	print 'the tonic of this chord is ' + tonic
+def getDiminishedSeventh(tonic):
+	#print 'the tonic of this chord is ' + tonic
+	#print 'the diminished seventh of this chord is ' + pitches[getIndex(tonic)-3]
+	return pitches[getIndex(tonic)-3]
+
+# input: tonic of chord
+# returns: third or fifth of chord
+def random(chordTonic):
+	#print currentKey
+	#print 'the tonic of this chord is ', chordTonic
+	#print getIndex(chordTonic)
+	num = 5	# this should be a random number between 0-10
+	if num < 5:
+		return minor[(getIndex(chordTonic) + 3) % len(minor)] # third of chord - 3 half steps up from chord tonic
+
+	else:
+		return minor[(getIndex(chordTonic) + 6) % len(minor)] # fifth of chord - 6 half steps up from chord tonic
 
 def getSeventh(tonic):
-	seventhChord = chord(currentKey[5], currentKey[3], currentKey[1], currentKey[6])
+	root = currentKey[6]
+	seventhChord = chord(getDiminishedSeventh(pitches[getIndex(tonic)-1]), None, None, root)
+	
+	# there's a better way to do this /shrug
+	seventhChord.setAlto(random(root)) # randomly set alto to third or fifth
+	if seventhChord.alto == minor[(getIndex(root) + 3) % len(minor)]: # if alto is third
+		seventhChord.setTenor(minor[(getIndex(root) + 6) % len(minor)]) # tenor should be fifth
+	else:
+		seventhChord.setTenor(minor[(getIndex(root) + 3) % len(minor)])
+		
 	print seventhChord.soprano
 	print seventhChord.alto
 	print seventhChord.tenor
 	print seventhChord.bass
-	getMinorSeventh(pitches[getIndex(tonic)-1])
+
+def resolveToI(chord):
+	oneChord = chord(currentKey[0], currentKey[0], currentKey[0], currentKey[0])
 
 if __name__ == '__main__':
 	main()
