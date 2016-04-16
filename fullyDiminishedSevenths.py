@@ -19,7 +19,7 @@ def getDiminishedSeventh(tonic):
 # returns: third or fifth of chord
 def random(chordTonic):
 	#print currentKey
-	#print 'the tonic of this chord is ', chordTonic
+	#print 'the tonic of this chord is', chordTonic
 	#print getIndex(chordTonic)
 	num = 5	# this should be a random number between 0-10
 	if num < 5:
@@ -38,14 +38,28 @@ def getSeventh(tonic):
 		seventhChord.setTenor(minor[(getIndex(root) + 6) % len(minor)]) # tenor should be fifth
 	else:
 		seventhChord.setTenor(minor[(getIndex(root) + 3) % len(minor)])
-		
+
 	print seventhChord.soprano
 	print seventhChord.alto
 	print seventhChord.tenor
 	print seventhChord.bass
 
-def resolveToI(chord):
+	return seventhChord
+
+def resolveToI(sevenChord):
+	# TO DO: actually make this work
 	oneChord = chord(currentKey[0], currentKey[0], currentKey[0], currentKey[0])
+	return oneChord
+	
+def test(oneChord, soprano, alto, tenor, bass):
+	# check if answer is correct here
+	print 'test called'
+	print soprano
+	print oneChord.soprano
+	if (soprano == oneChord.soprano) and (alto == oneChord.alto) and (tenor == oneChord.tenor) and (bass == oneChord.bass):
+		print 'correct!'
+	else:
+		print 'incorrect :('
 
 if __name__ == '__main__':
 	main()

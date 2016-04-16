@@ -12,7 +12,15 @@ def main():
 	elif prompt == '2':
 		key = getKey()
 		if key:
-			getSeventh(key)
+			print '\nresolve the following viio7 chord to the appropriate I chord:\n'
+			sevenChord = getSeventh(key)
+			oneChord = resolveToI(sevenChord)
+
+			soprano = raw_input('soprano: ')
+			alto = raw_input('alto: ')
+			tenor = raw_input('tenor: ')
+			bass = raw_input('bass: ')
+			test(oneChord, soprano, alto, tenor, bass)
 	else:
 		print 'that is not an option! try again'
 		main()
