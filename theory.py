@@ -3,6 +3,10 @@ from fullyDiminishedSevenths import *
 from generateCadential import *
 
 def main():
+	print 'welcome to chordinate!'
+	showPrompt()
+
+def showPrompt():
 	prompt = raw_input('\nwhat would you like to do? \n1) generate cadential 6/4\n2) practice fully diminished sevenths\n')
 	if prompt == '1':
 		key = getKey()
@@ -23,7 +27,7 @@ def main():
 			test(oneChord, soprano, alto, tenor, bass)
 	else:
 		print 'that is not an option! try again'
-		main()
+		showPrompt()
 
 if __name__ == '__main__':
 	main()

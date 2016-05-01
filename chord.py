@@ -17,3 +17,12 @@ class chord:
 
 	def setBass(self, pitch):
 		self.bass = pitch
+
+	def getTenor(self):
+		return self.tenor
+
+	def getAlto(self):
+		return self.alto
+
+	def getBass(self):
+		return self.bass
