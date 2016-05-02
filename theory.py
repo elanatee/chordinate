@@ -19,7 +19,9 @@ def showPrompt():
 			print '\nresolve the following viio7 chord to the appropriate I chord:\n'
 			sevenChord = getSeventh(key)
 			oneChord = resolveToI(sevenChord)
+			#oneChord.printChord()
 
+			sevenChord.printChord()
 			soprano = raw_input('soprano: ')
 			alto = raw_input('alto: ')
 			tenor = raw_input('tenor: ')

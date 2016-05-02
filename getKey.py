@@ -13,6 +13,9 @@ def main():
 	print keyPitches
 	"""
 
+"""
+returns the index of a pitch in array of major/minor notes
+"""
 def getIndex(key):
 	for i in range(len(pitches)):
 		if major[i] == key or minor[i] == key:
@@ -24,6 +27,9 @@ def halfStep(pitch):
 def wholeStep(pitch):
 	return pitch + 2
 
+"""
+sets currentKey to be a major key
+"""
 def getMajor(tonic):
 	index = getIndex(tonic)
 	for i in range(7):
@@ -34,6 +40,9 @@ def getMajor(tonic):
 		else:
 			index = wholeStep(index)
 
+"""
+sets currentKey to be a minor key
+"""
 def getMinor(tonic):
 	index = getIndex(tonic)
 	for i in range(7):
@@ -44,6 +53,10 @@ def getMinor(tonic):
 			index = wholeStep(index)
 	return currentKey
 
+"""
+prompts users to enter name of key
+returns key or prompts again for valid key name 
+"""
 def getKey():
 	key = raw_input('\nenter a key: ')
 	#print 'you chose the key of ' + key 

@@ -6,6 +6,12 @@ class chord:
 		self.tenor = tenor
 		self.bass = bass
 
+	def printChord(self):
+		print self.soprano
+		print self.alto
+		print self.tenor
+		print self.bass
+
 	def setSoprano(self, pitch):
 		self.soprano = pitch
 
