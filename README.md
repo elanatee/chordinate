@@ -19,3 +19,6 @@ main file
 - function to generate and resolve fully diminished seventh chords
 - improve generation of seventh chords maybe? i.e. inversions, viio7 as applied chord
 - it would be nice if you could spell certain keys enharmonically i.e. either F# or Gb major
+
+## things learned/mistakes made
+- currentKey wasn't cleared before each new key - pitches of each new key were simply appended, resulting in incorrect chord generation

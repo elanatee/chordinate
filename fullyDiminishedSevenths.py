@@ -35,7 +35,7 @@ def random(chordTonic):
 		return minor[(getIndex(chordTonic) + 6) % len(minor)].upper() # fifth of chord - 6 half steps up from chord tonic
 
 """
-super duper hacky way of undoing capitalization of the flat symbol (b) wow
+super duper hacky way of undoing capitalization of the flat symbol (b) w0w
 """
 def capitalize(note):
 	if len(note) > 1: 
@@ -51,10 +51,11 @@ generates the seventh chord
 def getSeventh(tonic):
 	root = currentKey[6]
 
+	print 'the root of this chord is',root
 	# sets the seventh to diminished seventh and root to root
 	seventhChord = chord(getDiminishedSeventh(pitches[getIndex(tonic)-1]), None, None, root)
 	
-	# there should be a better way to do this
+	# there's a better way to do this prob
 	altoVoice = capitalize(random(root))
 	seventhChord.setAlto(altoVoice) # randomly set alto voice to third or fifth
 

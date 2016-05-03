@@ -24,6 +24,9 @@ class chord:
 	def setBass(self, pitch):
 		self.bass = pitch
 
+	def getSoprano(self):
+		return self.soprano
+
 	def getTenor(self):
 		return self.tenor
 

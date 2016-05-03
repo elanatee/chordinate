@@ -7,17 +7,21 @@ def main():
 	showPrompt()
 
 def showPrompt():
-	prompt = raw_input('\nwhat would you like to do? \n1) generate cadential 6/4\n2) practice fully diminished sevenths\n')
+	prompt = raw_input('\nwhat would you like to do? \n1) generate cadential 6/4\n2) practice fully diminished sevenths \n3) exit\n')
 	if prompt == '1':
 		key = getKey()
 		if key:
 			#print 'valid key!'
 			generateCad(key)
+		showPrompt()
 	elif prompt == '2':
-		key = getKey()
+		key = getKey() 
 		if key:
+			print 'currentkey is', currentKey
 			print '\nresolve the following viio7 chord to the appropriate I chord:\n'
+			
 			sevenChord = getSeventh(key)
+
 			oneChord = resolveToI(sevenChord)
 			#oneChord.printChord()
 
@@ -27,6 +31,10 @@ def showPrompt():
 			tenor = raw_input('tenor: ')
 			bass = raw_input('bass: ')
 			test(oneChord, soprano, alto, tenor, bass)
+		showPrompt()
+	elif prompt == '3':
+		print 'okay, goodbye!'
+		return
 	else:
 		print 'that is not an option! try again'
 		showPrompt()

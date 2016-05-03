@@ -51,13 +51,16 @@ def getMinor(tonic):
 			index = halfStep(index)
 		else:
 			index = wholeStep(index)
-	return currentKey
+	#return currentKey
 
 """
 prompts users to enter name of key
 returns key or prompts again for valid key name 
 """
 def getKey():
+	# need to clear the current key first
+	# otherwise currentKey will grow indefinitely
+	del currentKey[:]
 	key = raw_input('\nenter a key: ')
 	#print 'you chose the key of ' + key 
 	if key in major:
