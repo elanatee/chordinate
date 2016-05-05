@@ -23,7 +23,6 @@ input: tonic of chord
 returns: third or fifth of chord
 """
 def random(chordTonic):
-	#print currentKey
 	#print 'the tonic of this chord is', chordTonic
 	#print getIndex(chordTonic)
 	num = randint(0,11)	# random number between 0-10
@@ -49,7 +48,7 @@ generates the seventh chord
 def getSeventh(tonic):
 	root = currentKey[6]
 
-	print 'the root of this chord is',root
+	#print 'the root of this chord is',root
 	# sets the seventh to diminished seventh and root to root
 	seventhChord = chord(getDiminishedSeventh(pitches[getIndex(tonic)-1]), None, None, root)
 	
@@ -88,10 +87,10 @@ def resolveToI(sevenChord):
 checks if inputted answer is same as generated I chord
 """
 def test(oneChord, soprano, alto, tenor, bass):
-	print 'test called'
-	#print soprano
-	#print oneChord.soprano
+	#print 'test called'
 	if (soprano == oneChord.soprano) and (alto == oneChord.alto) and (tenor == oneChord.tenor) and (bass == oneChord.bass):
-		print 'correct!'
+		print '\ncorrect!'
+		return True
 	else:
-		print 'incorrect :('
+		print '\nincorrect :('
+		return False

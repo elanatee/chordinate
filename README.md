@@ -13,13 +13,13 @@ generates fully diminished seventh chords (currently in root position) and check
 chord class
 
 ## theory.py
-main file
+main 
 
 ## todo
 - document better/more
 - function to resolve V7 chords
 - function to generate secondary dominant chords
-- function to generate and resolve fully diminished seventh chords
+- ~~function to generate and resolve fully diminished seventh chords~~
 - improve generation of seventh chords maybe? i.e. inversions, viio7 as applied chord
 - it would be nice if you could spell certain keys enharmonically i.e. either F# or Gb major
 
