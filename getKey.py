@@ -4,7 +4,6 @@ major = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B']
 currentKey = []
 
 def main():
-	#key = raw_input('enter a key: ')
 	getKey()
 	"""
 	keyPitches = ""
@@ -51,7 +50,6 @@ def getMinor(tonic):
 			index = halfStep(index)
 		else:
 			index = wholeStep(index)
-	#return currentKey
 
 """
 prompts users to enter name of key
@@ -65,12 +63,12 @@ def getKey():
 	#print 'you chose the key of ' + key 
 	if key in major:
 		getMajor(key)
+		return key
 	elif key in minor:
-		print getMinor(key)
+		getMinor(key)
+		return key
 	else:
 		print 'please enter a valid key'
-		#getKey()
-	return key
-
+	
 if __name__ == '__main__':
 	main()

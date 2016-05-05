@@ -1,3 +1,5 @@
+# chordinate
+
 ## getKey.py
 gets proper scale degrees for major keys according to user input
 
@@ -14,6 +16,7 @@ chord class
 main file
 
 ## todo
+- document better/more
 - function to resolve V7 chords
 - function to generate secondary dominant chords
 - function to generate and resolve fully diminished seventh chords
