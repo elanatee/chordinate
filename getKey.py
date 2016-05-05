@@ -69,7 +69,7 @@ def getKey():
 		print getMinor(key)
 	else:
 		print 'please enter a valid key'
-		getKey()
+		#getKey()
 	return key
 
 if __name__ == '__main__':

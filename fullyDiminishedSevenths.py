@@ -2,7 +2,6 @@ from chord import *
 from getKey import currentKey, pitches, major, minor
 from random import randint
 
-
 """
 returns the index of a pitch in array of major/minor notes
 """
@@ -43,7 +42,6 @@ def capitalize(note):
 			note = note[:-1]
 			note += 'b'
 	return note
-
 
 """
 generates the seventh chord
