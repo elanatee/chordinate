@@ -29,6 +29,13 @@ def halfStep(pitch):
 def wholeStep(pitch):
 	return pitch + 2
 
+def keyHasSharps(tonic):
+	sharp_keys = ['G', 'D', 'A', 'E', 'B', 'F#', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'a#']
+	if tonic in sharp_keys:
+		return True
+	else:
+		return False
+
 """
 sets currentKey to be a major key
 """
@@ -37,7 +44,8 @@ def getMajor(tonic):
 	for i in range(7):
 		#print pitches[index]
 		# this should make things have proper enharmonic spelling
-		if (tonic == 'G') or (tonic == 'D') or (tonic == 'A') or (tonic == 'E') or (tonic == 'B') or (tonic == 'F#'):
+		#if (tonic == 'G') or (tonic == 'D') or (tonic == 'A') or (tonic == 'E') or (tonic == 'B') or (tonic == 'F#') or (tonic == 'e') or (tonic == 'b') or (tonic == 'f#') or (tonic == 'c#') or (tonic == 'g#'):
+		if keyHasSharps(tonic):
 			currentKey.append(pitches_sharp[index % len(pitches)])
 		else:
 			currentKey.append(pitches[index % len(pitches)])
@@ -53,7 +61,10 @@ sets currentKey to be a minor key
 def getMinor(tonic):
 	index = getIndex(tonic)
 	for i in range(7):
-		currentKey.append(pitches[index % len(pitches)])
+		if keyHasSharps(tonic):
+			currentKey.append(pitches_sharp[index % len(pitches)])
+		else:
+			currentKey.append(pitches[index % len(pitches)])
 		if i == 1 or i == 4:
 			index = halfStep(index)
 		else:

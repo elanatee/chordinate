@@ -25,3 +25,5 @@ main
 
 ## things learned/mistakes made
 - currentKey wasn't cleared before each new key - pitches of each new key were simply appended, resulting in incorrect chord generation
+- fully diminished seventh chords in minor were not being built off the leading tone
+- parsing strings is difficult when you keep re-capitalizing/enharmonically spelling things

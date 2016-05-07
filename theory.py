@@ -17,7 +17,7 @@ def cadential():
 def testFullyDiminished():
 	key = getKey()
 	if key:	
-		print 'currentkey is', currentKey
+		#print 'currentkey is', currentKey
 		print '\nresolve the following viio7 chord to the appropriate I chord in the key of ' + key + ':\n'
 		
 		def getInput():
@@ -31,9 +31,9 @@ def testFullyDiminished():
 			alto = raw_input('alto: ')
 			tenor = raw_input('tenor: ')
 			bass = raw_input('bass: ')
-			test(oneChord, soprano, alto, tenor, bass)
+			correctAnswer = test(oneChord, soprano, alto, tenor, bass)
 
-			if test is not True: 
+			if correctAnswer is False:
 				retry = raw_input('\ntry again? (y/n) ')
 				if retry == 'y':
 					getInput()
