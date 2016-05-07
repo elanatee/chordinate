@@ -1,17 +1,19 @@
 from chord import *
-from getKey import currentKey, pitches, major, minor
+from getKey import *
 from random import randint
 
 """
-returns the index of a pitch in array of major/minor notes
+input: key
+returns: index of a pitch in either pitches or pitches_sharp
 """
 def getIndex(key):
 	for i in range(len(pitches)):
-		if major[i] == key or minor[i] == key:
+		if pitches[i] == key or pitches_sharp[i] == key:
 			return i
 
 """
-returns the diminished seventh of a key/chord
+input: tonic of a chord
+returns: diminished seventh of a key/chord
 """
 def getDiminishedSeventh(tonic):
 	#print 'the tonic of this chord is ' + tonic
@@ -23,17 +25,25 @@ input: tonic of chord
 returns: third or fifth of chord
 """
 def random(chordTonic):
-	#print 'the tonic of this chord is', chordTonic
+	print 'the tonic of this chord is', chordTonic
 	#print getIndex(chordTonic)
 	num = randint(0,11)	# random number between 0-10
 	#print 'num is ' + str(num)
-	if num < 5:
-		return minor[(getIndex(chordTonic) + 3) % len(minor)].upper() # third of chord - 3 half steps up from chord tonic
-	else:
-		return minor[(getIndex(chordTonic) + 6) % len(minor)].upper() # fifth of chord - 6 half steps up from chord tonic
+	if chordTonic in pitches:
+		if num < 5:
+			return pitches[(getIndex(chordTonic) + 3) % len(minor)].upper() # third of chord - 3 half steps up from chord tonic
+		else:
+			return pitches[(getIndex(chordTonic) + 6) % len(minor)].upper() # fifth of chord - 6 half steps up from chord tonic
+	elif chordTonic in pitches_sharp:
+		if num < 5:
+			return pitches_sharp[(getIndex(chordTonic) + 3) % len(minor)].upper() # third of chord - 3 half steps up from chord tonic
+		else:
+			print 'getIndex of chordTonic is', getIndex(chordTonic)
+			return pitches_sharp[(getIndex(chordTonic) + 6) % len(minor)].upper() # fifth of chord - 6 half steps up from chord tonic
 
 """
 super duper hacky way of undoing capitalization of the flat symbol (b) w0w
+returns: capitalized note with lowercase b to indicate flat note
 """
 def capitalize(note):
 	if len(note) > 1: 
@@ -43,7 +53,9 @@ def capitalize(note):
 	return note
 
 """
-generates the seventh chord
+generates the seventh chord 
+input: tonic of a key
+returns: seventh chord object
 """
 def getSeventh(tonic):
 	root = currentKey[6]
@@ -67,6 +79,8 @@ def getSeventh(tonic):
 
 """
 generates I chord based on rules for resolving root, third, fifth, seventh
+input: seventh chord object
+returns: one chord object
 """
 def resolveToI(sevenChord):
 	# assumption: root is on bottom and seventh is on top
@@ -82,9 +96,11 @@ def resolveToI(sevenChord):
 		oneChord.setTenor(currentKey[2])
 		oneChord.setAlto(currentKey[2])
 	return oneChord
-	
+
 """
 checks if inputted answer is same as generated I chord
+input: one chord and user inputted guesses for pitches
+returns: true or false
 """
 def test(oneChord, soprano, alto, tenor, bass):
 	#print 'test called'

@@ -12,6 +12,10 @@ class chord:
 		print self.tenor
 		print self.bass
 
+	"""
+	setting functions
+	"""
+
 	def setSoprano(self, pitch):
 		self.soprano = pitch
 
@@ -23,6 +27,10 @@ class chord:
 
 	def setBass(self, pitch):
 		self.bass = pitch
+
+	"""
+	getting functions
+	"""
 
 	def getSoprano(self):
 		return self.soprano

@@ -1,6 +1,9 @@
 pitches = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B']
+pitches_sharp = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']
+
 minor = ['c', 'c#', 'd', 'eb', 'e', 'f', 'f#', 'g', 'g#', 'a', 'bb', 'b']
 major = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B']
+
 currentKey = []
 
 def main():
@@ -33,7 +36,12 @@ def getMajor(tonic):
 	index = getIndex(tonic)
 	for i in range(7):
 		#print pitches[index]
-		currentKey.append(pitches[index % len(pitches)])
+		# this should make things have proper enharmonic spelling
+		if (tonic == 'G') or (tonic == 'D') or (tonic == 'A') or (tonic == 'E') or (tonic == 'B') or (tonic == 'F#'):
+			currentKey.append(pitches_sharp[index % len(pitches)])
+		else:
+			currentKey.append(pitches[index % len(pitches)])
+
 		if i == 2:
 			index = halfStep(index)
 		else:
