@@ -53,18 +53,18 @@ def capitalize(note):
 			note += 'b'
 	return note
 
+"""
+returns True if a key has sharps
+"""
 def keyHasSharps(tonic):
-	sharp_keys = ['G', 'D', 'A', 'E', 'B', 'F#', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'a#']
 	if tonic in sharp_keys:
 		return True
-	else:
-		return False
 
+"""
+returns raised leading tone of a key
+"""
 def getLeadingTone(keyTonic):
-	##if keyHasSharps(keyTonic):
-		return pitches_sharp[getIndex(keyTonic.upper())-1]
-	##else:
-	##	return pitches[getIndex(keyTonic.upper())-1]
+	return pitches_sharp[getIndex(keyTonic.upper())-1]
 
 """
 generates the seventh chord 
@@ -75,13 +75,13 @@ def getSeventh(tonic):
 	root = currentKey[6]
 
 	if tonic in major:
-		rootOfChord = root
+		rootOfChord = root # chord is built off scale degree 7 
 	elif tonic in minor:
-		rootOfChord = getLeadingTone(tonic)
+		rootOfChord = getLeadingTone(tonic) # chord is built off leading tone
 
 	#print 'tonic is', tonic
 
-	# sets the seventh to diminished seventh and root to root
+	# sets the seventh to diminished seventh and root to rootOfChord
 	## if key with flats
 	if tonic in pitches: 
 		if tonic in major:

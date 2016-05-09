@@ -4,6 +4,8 @@ pitches_sharp = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']
 minor = ['c', 'c#', 'd', 'eb', 'e', 'f', 'f#', 'g', 'g#', 'a', 'bb', 'b']
 major = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B']
 
+sharp_keys = ['G', 'D', 'A', 'E', 'B', 'F#', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'a#']
+
 currentKey = []
 
 def main():
@@ -30,7 +32,6 @@ def wholeStep(pitch):
 	return pitch + 2
 
 def keyHasSharps(tonic):
-	sharp_keys = ['G', 'D', 'A', 'E', 'B', 'F#', 'e', 'b', 'f#', 'c#', 'g#', 'd#', 'a#']
 	if tonic in sharp_keys:
 		return True
 	else:
@@ -72,7 +73,8 @@ def getMinor(tonic):
 
 """
 prompts users to enter name of key
-returns key or prompts again for valid key name 
+if valid key, sets currentKey and returns key
+otherwise, prompts for valid key
 """
 def getKey():
 	# need to clear the current key first
