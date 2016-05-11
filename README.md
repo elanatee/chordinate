@@ -1,13 +1,17 @@
 # chordinate
+**chordinate** is a command-line program written in Python that generates chords commonly used in classical music - the cadential 6/4 and fully diminished seventh chords. this project was inspired by the several rules for chord resolutions studied in music theory II (MUSC 2146).
+
+## demo
+<img src="chordinate.gif">
 
 ## getKey.py
 function to return scale degrees for major and minor keys according to user input
 
 ## generateCadential.py
-function to generate chord tones for a cadential 6/4, the most used cadence in classical music
+function to generate chord tones for a [cadential 6/4](http://www.harmony.org.uk/book/voice_leading/cadential_6_4.htm), the most common 6/4 chord in tonal music
 
 ## fullyDiminishedSevenths.py
-functions to generate fully diminished seventh chords (currently only in root position), prompt user to enter notes to resolve viio7 to I chord, and check if user input is correct
+functions to generate [fully diminished seventh chords](https://en.wikipedia.org/wiki/Diminished_seventh_chord) (currently only in root position), prompt user to enter notes to resolve viio7 to I chord in SATB style, and check if user input is correct
 
 ## chord.py
 chord object class

@@ -18,7 +18,7 @@ def testFullyDiminished():
 	key = getKey()
 	if key:	
 		#print 'currentkey is', currentKey
-		print '\nresolve the following viio7 chord to the appropriate I chord in the key of ' + key + ':\n'
+		print '\nresolve the following viio7 chord to the appropriate I chord in SATB style:\n'
 		
 		def getInput():
 			sevenChord = getSeventh(key)

@@ -1,5 +1,9 @@
 from getKey import *
 
+"""
+UNFINISHED
+"""
+
 def main():
 	getScales()
 

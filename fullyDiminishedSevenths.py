@@ -29,7 +29,6 @@ def random(chordTonic):
 	#print getIndex(chordTonic)
 
 	num = randint(0,11)	# random number between 0-10
-	#print 'num is ' + str(num)
 
 	if chordTonic in pitches:
 		if num < 5:
@@ -121,6 +120,7 @@ def resolveToI(sevenChord):
 	oneChord = chord(currentKey[4], None, None, currentKey[0])
 	thirdOfChord = minor[(getIndex(chordTonic) + 3) % len(minor)].upper()
 	fifthOfChord = minor[(getIndex(chordTonic) + 6) % len(minor)].upper()
+
 	if sevenChord.getTenor() == fifthOfChord: 
 		oneChord.setTenor(currentKey[2])
 		oneChord.setAlto(currentKey[2])
