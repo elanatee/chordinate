@@ -31,7 +31,7 @@ def random(chordTonic):
 	num = randint(0,11)	# random number between 0-10
 
 	if chordTonic in pitches:
-		if num < 5:
+		if num < 5:	
 			return pitches[(getIndex(chordTonic) + 3) % len(minor)].upper() # third of chord - 3 half steps up from chord tonic
 		else:
 			return pitches[(getIndex(chordTonic) + 6) % len(minor)].upper() # fifth of chord - 6 half steps up from chord tonic
@@ -83,18 +83,23 @@ def getSeventh(tonic):
 	# sets the seventh to diminished seventh and root to rootOfChord
 	## if key with flats
 	if tonic in pitches: 
+		tonicIndex = getIndex(capitalize(tonic.upper()))
+		diminishedSeventh = getDiminishedSeventh(pitches[tonicIndex-1])
 		if tonic in major:
-			seventhChord = chord(getDiminishedSeventh(pitches[getIndex(capitalize(tonic.upper()))-1]), None, None, rootOfChord)
+			seventhChord = chord(diminishedSeventh, None, None, rootOfChord)
 		elif tonic in minor: 
-			seventhChord = chord(getDiminishedSeventh(pitches[getIndex(capitalize(tonic.upper()))-1]), None, None, rootOfChord)
+			seventhChord = chord(diminishedSeventh, None, None, rootOfChord)
 
 	## if key with sharps
 	else:
+		tonicIndex = getIndex(capitalize(tonic.upper()))
+		diminishedSeventh = getDiminishedSeventh(pitches_sharp[tonicIndex-1])
 		if tonic in major:
-			seventhChord = chord(getDiminishedSeventh(pitches_sharp[getIndex(capitalize(tonic.upper()))-1]), None, None, rootOfChord)
+			seventhChord = chord(diminishedSeventh, None, None, rootOfChord)
 		elif tonic in minor:
-			seventhChord = chord(getDiminishedSeventh(pitches_sharp[getIndex(capitalize(tonic.upper()))-1]), None, None, rootOfChord)
+			seventhChord = chord(diminishedSeventh, None, None, rootOfChord)
 
+	# sets third and fifth of chord
 	# there's a better way to do this prob
 	altoVoice = capitalize(random(rootOfChord))
 	seventhChord.setAlto(altoVoice) # randomly set alto voice to third or fifth
