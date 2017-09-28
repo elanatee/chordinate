@@ -1,3 +1,7 @@
+"""
+returns scale degrees for major and minor keys according to user input
+"""
+
 pitches = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B']
 pitches_sharp = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B']
 
@@ -10,20 +14,17 @@ currentKey = []
 
 def main():
 	getKey()
-	"""
-	keyPitches = ""
-	for i in currentKey:
-		keyPitches += i + " "
-	print keyPitches
-	"""
-
-"""
-returns the index of a pitch in array of major/minor notes
-"""
+	
 def getIndex(key):
-	for i in range(len(pitches)):
-		if major[i] == key or minor[i] == key:
-			return i
+	"""
+	returns
+	-------
+		index : int
+			the index of a pitch in array of major/minor notes
+	"""
+	for index in range(len(pitches)):
+		if major[index] == key or minor[index] == key:
+			return index
 
 def halfStep(pitch):
 	return pitch + 1
@@ -37,15 +38,17 @@ def keyHasSharps(tonic):
 	else:
 		return False
 
-"""
-sets currentKey to be a major key
-"""
 def getMajor(tonic):
+	"""initializes currentKey with pitches of major key
+
+	parameters
+	----------
+		tonic : str
+	"""
 	index = getIndex(tonic)
 	for i in range(7):
 		#print pitches[index]
 		# this should make things have proper enharmonic spelling
-		#if (tonic == 'G') or (tonic == 'D') or (tonic == 'A') or (tonic == 'E') or (tonic == 'B') or (tonic == 'F#') or (tonic == 'e') or (tonic == 'b') or (tonic == 'f#') or (tonic == 'c#') or (tonic == 'g#'):
 		if keyHasSharps(tonic):
 			currentKey.append(pitches_sharp[index % len(pitches)])
 		else:
@@ -56,10 +59,13 @@ def getMajor(tonic):
 		else:
 			index = wholeStep(index)
 
-"""
-sets currentKey to be a minor key
-"""
 def getMinor(tonic):
+	"""initializes currentKey with pitches of minor key
+
+	parameters
+	----------
+		tonic : str
+	"""
 	index = getIndex(tonic)
 	for i in range(7):
 		if keyHasSharps(tonic):
@@ -71,17 +77,18 @@ def getMinor(tonic):
 		else:
 			index = wholeStep(index)
 
-"""
-prompts users to enter name of key
-if valid key, sets currentKey and returns key
-otherwise, prompts for valid key
-"""
 def getKey():
-	# need to clear the current key first
+	"""prompts users to enter name of key
+	
+	if valid key, sets currentKey and returns key
+	otherwise, prompts for valid key
+	"""
+	# clear currentKey first, 
 	# otherwise currentKey will grow indefinitely
 	del currentKey[:]
-	key = raw_input('\nenter a key: ')
-	#print 'you chose the key of ' + key 
+
+	key = input('\nenter a key (uppercase for major, lowercase for minor): ')
+
 	if key in major:
 		getMajor(key)
 		return key
@@ -89,7 +96,7 @@ def getKey():
 		getMinor(key)
 		return key
 	else:
-		print 'please enter a valid key'
+		print('please enter a valid key')
 	
 if __name__ == '__main__':
 	main()

@@ -1,5 +1,8 @@
-class chord:
-	
+"""
+class to model Chord object with four voices
+"""
+
+class Chord:
 	def __init__(self, soprano, alto, tenor, bass):
 		self.soprano = soprano
 		self.alto = alto
@@ -7,15 +10,14 @@ class chord:
 		self.bass = bass
 
 	def printChord(self):
-		print self.soprano
-		print self.alto
-		print self.tenor
-		print self.bass
+		print(self.soprano)
+		print(self.alto)
+		print(self.tenor)
+		print(self.bass)
 
 	"""
 	setting functions
 	"""
-
 	def setSoprano(self, pitch):
 		self.soprano = pitch
 
@@ -31,7 +33,6 @@ class chord:
 	"""
 	getting functions
 	"""
-
 	def getSoprano(self):
 		return self.soprano
 
