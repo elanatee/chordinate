@@ -25,7 +25,7 @@ def testFullyDiminished():
 		print('\nresolve the following viio7 chord to the appropriate I chord in SATB style:\n')
 		
 		def getInput():
-			sevenChord = getSeventh(key)
+			sevenChord = getSeven(key)
 			oneChord = resolveToI(sevenChord)
 
 			sevenChord.printChord()
